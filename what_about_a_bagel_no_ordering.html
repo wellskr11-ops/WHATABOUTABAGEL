@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What About A Bagel — Oakhurst, NJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #FDF6EC;
+    --brown: #3B2314;
+    --tan: #C8974F;
+    --light-tan: #F0DFC0;
+    --dark: #1C110A;
+    --text-muted: #7A5C44;
+    --white: #FFFDF9;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--brown); overflow-x: hidden; }
+  nav { background: var(--brown); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--cream); letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--light-tan); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--tan); }
+  .hero { min-height: 88vh; background: var(--brown); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, #5a3520 0%, var(--brown) 60%); opacity: 0.7; }
+  .hero-eyebrow { color: var(--tan); font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1.5rem; position: relative; animation: fadeUp 0.8s ease forwards; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 900; color: var(--cream); line-height: 0.95; position: relative; animation: fadeUp 0.8s 0.15s ease both; }
+  .hero h1 em { font-style: italic; color: var(--tan); display: block; }
+  .hero-sub { color: var(--light-tan); font-size: 1.05rem; margin-top: 1.8rem; max-width: 420px; line-height: 1.6; position: relative; animation: fadeUp 0.8s 0.3s ease both; opacity: 0.85; }
+  .hero-cta { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; justify-content: center; position: relative; animation: fadeUp 0.8s 0.45s ease both; }
+  .btn-primary { background: var(--tan); color: var(--brown); padding: 0.9rem 2.2rem; border: none; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: var(--light-tan); transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: var(--cream); padding: 0.9rem 2.2rem; border: 1px solid rgba(255,255,255,0.3); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: border-color 0.2s, background 0.2s; }
+  .btn-secondary:hover { border-color: var(--tan); background: rgba(200,151,79,0.1); }
+  .hero-badge { position: relative; margin-top: 3rem; display: inline-flex; align-items: center; gap: 0.6rem; color: var(--light-tan); font-size: 0.8rem; opacity: 0.6; animation: fadeUp 0.8s 0.6s ease both; }
+  .hero-badge::before, .hero-badge::after { content: '—'; }
+  .strip { background: var(--tan); padding: 1rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+  .strip-item { color: var(--brown); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
+  .strip-dot { width: 5px; height: 5px; background: var(--brown); border-radius: 50%; opacity: 0.4; }
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tan); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--brown); line-height: 1.15; }
+  .menu-section { background: var(--white); }
+  .menu-tabs { display: flex; gap: 0; margin: 2.5rem 0 2rem; border-bottom: 1px solid var(--light-tan); }
+  .tab { padding: 0.7rem 1.5rem; background: none; border: none; border-bottom: 2px solid transparent; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); cursor: pointer; transition: all 0.2s; margin-bottom: -1px; }
+  .tab.active { color: var(--brown); border-bottom-color: var(--tan); font-weight: 500; }
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+  .menu-item { background: var(--cream); border: 1px solid var(--light-tan); border-radius: 4px; padding: 1.25rem; transition: border-color 0.2s, transform 0.15s; }
+  .menu-item:hover { border-color: var(--tan); transform: translateY(-2px); }
+  .menu-item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+  .menu-item-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--brown); }
+  .menu-item-price { font-size: 0.95rem; font-weight: 500; color: var(--tan); white-space: nowrap; margin-left: 1rem; }
+  .menu-item-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+  .menu-badge { display: inline-block; background: var(--tan); color: var(--cream); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; margin-top: 0.6rem; }
+  .gallery-section { background: var(--cream); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+  .gallery-cell { aspect-ratio: 1; border-radius: 4px; overflow: hidden; position: relative; }
+  .gallery-cell.tall { grid-row: span 2; aspect-ratio: unset; }
+  .gallery-placeholder { width: 100%; height: 100%; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+  .gp-1 { background: #E8D5B5; } .gp-2 { background: #D4B896; } .gp-3 { background: #C4A378; } .gp-4 { background: #B8956A; } .gp-5 { background: #E2C9A4; }
+  .gp-icon { font-size: 2rem; opacity: 0.35; }
+  .catering-section { background: var(--light-tan); }
+  .catering-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .catering-text .section-title { margin-bottom: 1.25rem; }
+  .catering-text p { color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; }
+  .catering-features { list-style: none; margin-bottom: 2rem; }
+  .catering-features li { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(58,35,20,0.1); font-size: 0.9rem; color: var(--brown); }
+  .cf-dot { width: 6px; height: 6px; background: var(--tan); border-radius: 50%; flex-shrink: 0; }
+  .catering-contact { background: var(--white); border-radius: 4px; padding: 2rem; }
+  .catering-contact h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--brown); margin-bottom: 1.25rem; }
+  .contact-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--light-tan); font-size: 0.9rem; color: var(--brown); }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-label { color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; width: 70px; flex-shrink: 0; }
+  .info-section { background: var(--brown); padding: 4rem 2rem; }
+  .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 2.5rem auto 0; }
+  .info-card { text-align: center; }
+  .info-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--tan); margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+  .info-card p { color: var(--light-tan); font-size: 0.85rem; line-height: 1.7; opacity: 0.8; }
+  footer { background: var(--dark); padding: 2rem; text-align: center; }
+  footer p { color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.05em; }
+  footer a { color: var(--tan); text-decoration: none; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .catering-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .info-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-cell.tall { grid-row: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">What About A Bagel</div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#catering">Catering</a></li>
+    <li><a href="#info">Hours</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Freshly Made Daily · Oakhurst, NJ</p>
+  <h1>What About<em>A Bagel?</em></h1>
+  <p class="hero-sub">Hand-rolled, kettle-boiled bagels baked fresh every morning. The real deal — right here in Oakhurst.</p>
+  <div class="hero-cta">
+    <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Menu</button>
+    <button class="btn-secondary" onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'})">Hours & Location</button>
+  </div>
+  <div class="hero-badge">Est. in Oakhurst, NJ</div>
+</section>
+
+<div class="strip">
+  <div class="strip-item">Hand-Rolled Daily</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">Kettle Boiled</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">Made Fresh Every Morning</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">Catering Available</div>
+</div>
+
+<section class="menu-section" id="menu">
+  <div class="section-inner">
+    <p class="section-label">What We've Got</p>
+    <h2 class="section-title">The Menu</h2>
+    <div class="menu-tabs">
+      <button class="tab active" onclick="showTab('bagels', this)">Bagels</button>
+      <button class="tab" onclick="showTab('sandwiches', this)">Sandwiches</button>
+      <button class="tab" onclick="showTab('spreads', this)">Spreads</button>
+      <button class="tab" onclick="showTab('drinks', this)">Drinks</button>
+    </div>
+    <div id="tab-bagels" class="menu-grid">
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Plain</span><span class="menu-item-price">$1.75</span></div><p class="menu-item-desc">Classic kettle-boiled, golden crust. The one that started it all.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Everything</span><span class="menu-item-price">$1.95</span></div><p class="menu-item-desc">Sesame, poppy, onion, garlic, salt. A full five-layer experience.</p><span class="menu-badge">Fan Favorite</span></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Sesame</span><span class="menu-item-price">$1.95</span></div><p class="menu-item-desc">Toasted sesame seeds on a perfectly chewy boiled bagel.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Salt</span><span class="menu-item-price">$1.95</span></div><p class="menu-item-desc">Coarse sea salt crust for those who keep it simple and bold.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Onion</span><span class="menu-item-price">$1.95</span></div><p class="menu-item-desc">Caramelized onion flakes baked into every bite.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Cinnamon Raisin</span><span class="menu-item-price">$1.95</span></div><p class="menu-item-desc">Lightly sweet with warm spice. Pairs beautifully with plain cream cheese.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Poppy</span><span class="menu-item-price">$1.95</span></div><p class="menu-item-desc">Dense poppy seed coating on a tender, chewy center.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Whole Wheat</span><span class="menu-item-price">$1.95</span></div><p class="menu-item-desc">Hearty and nutty. All the chew, none of the guilt.</p></div>
+    </div>
+    <div id="tab-sandwiches" class="menu-grid" style="display:none">
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Egg & Cheese</span><span class="menu-item-price">$6.50</span></div><p class="menu-item-desc">Fresh-cracked egg, melted American cheese. Your choice of bagel.</p><span class="menu-badge">Breakfast</span></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Bacon, Egg & Cheese</span><span class="menu-item-price">$8.00</span></div><p class="menu-item-desc">Crispy bacon strips, egg, and cheese on any bagel.</p><span class="menu-badge">Most Popular</span></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Lox & Cream Cheese</span><span class="menu-item-price">$12.50</span></div><p class="menu-item-desc">Nova lox, whipped plain cream cheese, capers, red onion, tomato.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Turkey & Swiss</span><span class="menu-item-price">$9.50</span></div><p class="menu-item-desc">Sliced turkey, Swiss, lettuce, tomato, deli mustard.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Tuna Salad</span><span class="menu-item-price">$8.50</span></div><p class="menu-item-desc">House-made tuna salad with celery and a little crunch.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Avocado & Egg</span><span class="menu-item-price">$9.00</span></div><p class="menu-item-desc">Smashed avocado, soft-scrambled egg, everything seasoning.</p></div>
+    </div>
+    <div id="tab-spreads" class="menu-grid" style="display:none">
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Plain Cream Cheese</span><span class="menu-item-price">$1.50</span></div><p class="menu-item-desc">House-whipped, light and creamy. The classic.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Scallion Cream Cheese</span><span class="menu-item-price">$1.75</span></div><p class="menu-item-desc">Bright, oniony, and fresh. Goes with everything.</p><span class="menu-badge">Fan Favorite</span></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Lox Spread</span><span class="menu-item-price">$2.50</span></div><p class="menu-item-desc">Cream cheese blended with smoked salmon and dill.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Vegetable Cream Cheese</span><span class="menu-item-price">$1.75</span></div><p class="menu-item-desc">Diced carrots, celery, bell pepper, and onion mixed in.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Butter</span><span class="menu-item-price">$1.00</span></div><p class="menu-item-desc">Salted or unsalted — a timeless choice.</p></div>
+    </div>
+    <div id="tab-drinks" class="menu-grid" style="display:none">
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Drip Coffee</span><span class="menu-item-price">$2.00</span></div><p class="menu-item-desc">Fresh-brewed, served hot. The perfect bagel companion.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Iced Coffee</span><span class="menu-item-price">$3.00</span></div><p class="menu-item-desc">House coffee over ice. Add milk or cream.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Orange Juice</span><span class="menu-item-price">$3.50</span></div><p class="menu-item-desc">Fresh squeezed. Small or large.</p></div>
+      <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Bottled Water</span><span class="menu-item-price">$1.50</span></div><p class="menu-item-desc">Cold and refreshing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+  <div class="section-inner">
+    <p class="section-label">From Our Kitchen</p>
+    <h2 class="section-title">A Peek Inside</h2>
+    <div class="gallery-grid">
+      <div class="gallery-cell tall gp-2"><div class="gallery-placeholder"><span class="gp-icon">🥯</span><span>Add your photo</span></div></div>
+      <div class="gallery-cell gp-1"><div class="gallery-placeholder"><span class="gp-icon">📸</span><span>Upload here</span></div></div>
+      <div class="gallery-cell gp-3"><div class="gallery-placeholder"><span class="gp-icon">📸</span><span>Upload here</span></div></div>
+      <div class="gallery-cell gp-4"><div class="gallery-placeholder"><span class="gp-icon">📸</span><span>Upload here</span></div></div>
+      <div class="gallery-cell gp-5"><div class="gallery-placeholder"><span class="gp-icon">📸</span><span>Upload here</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="catering-section" id="catering">
+  <div class="section-inner">
+    <div class="catering-inner">
+      <div class="catering-text">
+        <p class="section-label">Feed the Crowd</p>
+        <h2 class="section-title">Catering & Events</h2>
+        <p>Whether it's a morning meeting, a birthday brunch, or a neighborhood block party — we've got you covered. Bagel trays, spread platters, and box orders ready for any size event.</p>
+        <ul class="catering-features">
+          <li><span class="cf-dot"></span>Dozen and half-dozen bagel trays</li>
+          <li><span class="cf-dot"></span>Assorted cream cheese platters</li>
+          <li><span class="cf-dot"></span>Lox & smoked fish spreads</li>
+          <li><span class="cf-dot"></span>Individual box orders for offices</li>
+          <li><span class="cf-dot"></span>Custom orders with 48 hr notice</li>
+        </ul>
+        <button class="btn-primary" onclick="document.getElementById('catering-contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+      </div>
+      <div class="catering-contact" id="catering-contact">
+        <h3>Contact Us</h3>
+        <div class="contact-row">
+          <span class="contact-label">Phone</span>
+          <span>(732) 555-0000</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span>hello@whataboutabagel.com</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Address</span>
+          <span>Oakhurst, NJ 07755</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Hours</span>
+          <span>Mon–Fri 6am–2pm · Sat–Sun 6am–1pm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section" id="info">
+  <div class="section-inner" style="text-align:center">
+    <p class="section-label" style="color:var(--tan);text-align:center">Find Us</p>
+    <h2 class="section-title" style="color:var(--cream);text-align:center">Hours & Location</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Hours</h3>
+        <p>Monday – Friday<br>6:00 AM – 2:00 PM</p>
+        <p style="margin-top:0.75rem">Saturday – Sunday<br>6:00 AM – 1:00 PM</p>
+      </div>
+      <div class="info-card">
+        <h3>Location</h3>
+        <p>Oakhurst, NJ 07755<br><br>Easy parking.<br>Walk-ins always welcome.</p>
+      </div>
+      <div class="info-card">
+        <h3>Catering</h3>
+        <p>Call or email to place<br>a catering order.<br><br>48 hr notice appreciated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 What About A Bagel · Oakhurst, NJ · <a href="tel:7325550000">(732) 555-0000</a></p>
+</footer>
+
+<script>
+function showTab(name, el) {
+  ['bagels','sandwiches','spreads','drinks'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = 'none';
+  });
+  document.getElementById('tab-' + name).style.display = 'grid';
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
